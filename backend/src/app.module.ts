@@ -1,7 +1,7 @@
-import { Module } from '@nestjs/common';
+import { Module, ValidationPipe } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { APP_GUARD } from '@nestjs/core';
+import { APP_GUARD, APP_PIPE } from '@nestjs/core';
 import {
   AuthGuard,
   KeycloakConnectModule,
@@ -10,6 +10,8 @@ import {
 } from 'nest-keycloak-connect';
 import { ConfigModule } from './config/config.module';
 import { KeycloakService } from './config/keycloak/keycloak.service';
+import { AuthModule } from './auth/auth.module';
+import { SharedModule } from './shared/shared.module';
 
 @Module({
   imports: [
@@ -17,6 +19,8 @@ import { KeycloakService } from './config/keycloak/keycloak.service';
       useExisting: KeycloakService,
       imports: [ConfigModule],
     }),
+    AuthModule,
+    SharedModule,
   ],
   controllers: [AppController],
   providers: [
@@ -32,6 +36,10 @@ import { KeycloakService } from './config/keycloak/keycloak.service';
     {
       provide: APP_GUARD,
       useClass: RoleGuard,
+    },
+    {
+      provide: APP_PIPE,
+      useClass: ValidationPipe,
     },
   ],
 })

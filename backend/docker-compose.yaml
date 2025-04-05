@@ -20,6 +20,12 @@ services:
       - "7443:7443"
     networks:
       - local_network
+    volumes:
+      - keycloak-data:/opt/keycloak/data
+
+volumes:
+  keycloak-data:
+
 networks:
   local_network:
     driver: bridge
