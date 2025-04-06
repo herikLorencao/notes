@@ -12,7 +12,7 @@ export class KeycloakService implements KeycloakConnectOptionsFactory {
   createKeycloakConnectOptions(): KeycloakConnectOptions {
     return {
       authServerUrl: 'http://localhost:7080',
-      realm: 'master',
+      realm: 'notes',
       clientId: 'notes-api',
       secret: `${process.env.KEYCLOAK_CLIENT_SECRET}`,
       policyEnforcement: PolicyEnforcementMode.PERMISSIVE,

@@ -12,6 +12,7 @@ async function bootstrap() {
     .setDescription('API para gerenciamento de notas')
     .setVersion('1.0')
     .addBearerAuth()
+    .addSecurityRequirements('bearer')
     .build();
 
   const documentFactory = () => SwaggerModule.createDocument(app, config);
