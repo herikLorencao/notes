@@ -10,22 +10,34 @@ import {
 } from 'nest-keycloak-connect';
 import { KeycloakService } from './keycloak/keycloak.service';
 import { AuthModule } from './auth/auth.module';
-import { SharedModule } from './shared/shared.module';
 import { ConfigModule } from '@nestjs/config';
 import { KeycloakModule } from './keycloak/keycloak.module';
+import { NotesModule } from './notes/notes.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
     }),
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: 'localhost',
+      port: 5432,
+      username: 'postgres',
+      password: 'postgres',
+      database: 'notes',
+      entities: [],
+      synchronize: true,
+      autoLoadEntities: true,
+    }),
     KeycloakConnectModule.registerAsync({
       useExisting: KeycloakService,
       imports: [KeycloakModule],
     }),
     AuthModule,
-    SharedModule,
     KeycloakModule,
+    NotesModule,
   ],
   controllers: [AppController],
   providers: [

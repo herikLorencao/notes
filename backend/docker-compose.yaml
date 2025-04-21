@@ -22,9 +22,21 @@ services:
       - local_network
     volumes:
       - keycloak-data:/opt/keycloak/data
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    volumes:
+      - postgresql-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - 5432:5432
+    networks:
+      - local_network
 
 volumes:
   keycloak-data:
+  postgresql-data:
 
 networks:
   local_network:
