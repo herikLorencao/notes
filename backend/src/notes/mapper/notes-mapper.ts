@@ -1,4 +1,4 @@
-import { Note } from '../note.entity';
+import { Note } from '../entities/note.entity';
 import { CreateOrUpdateNoteRequest } from '../requests/create-or-update-note.request';
 import { NoteResponse } from '../responses/note.response';
 

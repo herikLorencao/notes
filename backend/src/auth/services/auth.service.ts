@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { AuthResponse } from './responses/auth.response';
+import { AuthResponse } from '../responses/auth.response';
 import { firstValueFrom } from 'rxjs';
 import { HttpService } from '@nestjs/axios';
 import * as process from 'node:process';

@@ -7,10 +7,10 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import { NotesService } from './notes.service';
-import { CreateOrUpdateNoteRequest } from './requests/create-or-update-note.request';
+import { NotesService } from '../services/notes.service';
+import { CreateOrUpdateNoteRequest } from '../requests/create-or-update-note.request';
 import { ApiBearerAuth } from '@nestjs/swagger';
-import { NotesMapper } from './mapper/notes-mapper';
+import { NotesMapper } from '../mapper/notes-mapper';
 
 @Controller('notes')
 export class NotesController {

@@ -1,8 +1,8 @@
 import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common';
-import { AuthService } from './auth.service';
+import { AuthService } from '../services/auth.service';
 import { Unprotected } from 'nest-keycloak-connect';
-import { LoginRequest } from './requests/login.request';
-import { RenewTokenRequest } from './requests/renew-token.request';
+import { LoginRequest } from '../requests/login.request';
+import { RenewTokenRequest } from '../requests/renew-token.request';
 import { ApiBearerAuth } from '@nestjs/swagger';
 
 @Controller('auth')

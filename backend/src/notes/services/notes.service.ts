@@ -4,9 +4,9 @@ import {
   UnprocessableEntityException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Note } from './note.entity';
+import { Note } from '../entities/note.entity';
 import { Repository } from 'typeorm';
-import { NotesMapper } from './mapper/notes-mapper';
+import { NotesMapper } from '../mapper/notes-mapper';
 
 @Injectable()
 export class NotesService {
