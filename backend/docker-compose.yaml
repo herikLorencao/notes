@@ -33,7 +33,6 @@ services:
       - 5432:5432
     networks:
       - local_network
-
 volumes:
   keycloak-data:
   postgresql-data:

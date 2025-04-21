@@ -1,1 +1,3 @@
-<h1>Ola Mundo</h1>
+<script lang="ts">
+
+</script>
