@@ -6,6 +6,7 @@ import {
   Param,
   Post,
   Put,
+  Query,
 } from '@nestjs/common';
 import { NotesService } from '../services/notes.service';
 import { CreateOrUpdateNoteRequest } from '../requests/create-or-update-note.request';
@@ -26,6 +27,18 @@ export class NotesController {
   @ApiBearerAuth()
   async findOne(@Param('id') id: number) {
     return await this.service.findOne(id);
+  }
+
+  @Get('search')
+  @ApiBearerAuth()
+  async search(@Query('q') query: string) {
+    return await this.service.search(query);
+  }
+
+  @Get('suggestions')
+  @ApiBearerAuth()
+  async suggest(@Query('q') query: string) {
+    return await this.service.suggest(query);
   }
 
   @Post()

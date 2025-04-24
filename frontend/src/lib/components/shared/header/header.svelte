@@ -2,7 +2,6 @@
 	import { Toggle } from '$lib/components/ui/toggle';
 	import * as Menubar from '$lib/components/ui/menubar';
 	import * as Avatar from '$lib/components/ui/avatar';
-	import * as Command from '$lib/components/ui/command';
 
 	let darkModeEnable = $state(true);
 
