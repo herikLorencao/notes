@@ -52,7 +52,13 @@ export class SonicGateway {
     const channel = this.getIngestChannel();
 
     try {
-      await channel.push(collection, bucket, result, content);
+      await channel.push(
+        collection,
+        bucket,
+        result,
+        content,
+        this.SONIC_DEFAULT_OPTIONS,
+      );
     } catch (e) {
       console.error(e);
     } finally {

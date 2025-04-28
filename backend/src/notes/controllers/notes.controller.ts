@@ -23,12 +23,6 @@ export class NotesController {
     return this.service.findAll();
   }
 
-  @Get(':id')
-  @ApiBearerAuth()
-  async findOne(@Param('id') id: number) {
-    return await this.service.findOne(id);
-  }
-
   @Get('search')
   @ApiBearerAuth()
   async search(@Query('q') query: string) {
@@ -39,6 +33,12 @@ export class NotesController {
   @ApiBearerAuth()
   async suggest(@Query('q') query: string) {
     return await this.service.suggest(query);
+  }
+
+  @Get(':id')
+  @ApiBearerAuth()
+  async findOne(@Param('id') id: number) {
+    return await this.service.findOne(id);
   }
 
   @Post()

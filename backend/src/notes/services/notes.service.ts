@@ -76,22 +76,24 @@ export class NotesService {
 
   private async insertInSonic(note: Note) {
     const noteContent = `${note.title} ${note.content}`;
+    const noteResultFormat = `${note.title}:${note.id}`;
 
     return await this.sonicGateway.insert(
       this.NOTES_COLLECTION,
       this.NOTES_BUCKET,
-      note.title,
+      noteResultFormat,
       noteContent,
     );
   }
 
   private async removeInSonic(note: Note) {
     const noteContent = `${note.title} ${note.content}`;
+    const noteResultFormat = `${note.title}:${note.id}`;
 
     return await this.sonicGateway.remove(
       this.NOTES_COLLECTION,
       this.NOTES_BUCKET,
-      note.title,
+      noteResultFormat,
       noteContent,
     );
   }

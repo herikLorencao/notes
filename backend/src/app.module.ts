@@ -12,6 +12,7 @@ import { ConfigModule } from '@nestjs/config';
 import { KeycloakModule } from './keycloak/keycloak.module';
 import { NotesModule } from './notes/notes.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import * as process from 'node:process';
 
 @Module({
   imports: [
@@ -20,11 +21,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: 'postgres',
-      password: 'postgres',
-      database: 'notes',
+      host: process.env.DATABASE_HOST,
+      port: Number(process.env.DATABASE_PORT),
+      username: process.env.DATABASE_USER,
+      password: process.env.DATABASE_PASSWORD,
+      database: process.env.DATABASE_NAME,
       entities: [],
       synchronize: true,
       autoLoadEntities: true,

@@ -22,19 +22,19 @@ services:
     networks:
       - local_network
     volumes:
-      - keycloak-data:/opt/keycloak/data
+      - .var/keycloak:/opt/keycloak/data
   postgres:
     image: postgres:latest
     container_name: postgres_notes
     volumes:
-      - postgresql-data:/var/lib/postgresql/data
+      - .var/postgresql:/var/lib/postgresql/data
+      - ./config/create-db.sql:/docker-entrypoint-initdb.d/create_database.sql
     environment:
       POSTGRES_PASSWORD: postgres
     ports:
       - "5432:5432"
     networks:
       - local_network
-
   sonic:
     image: valeriansaliou/sonic:v1.4.9
     container_name: sonic_notes
@@ -42,11 +42,7 @@ services:
       - "1491:1491"
     volumes:
       - ./config/sonic.cfg:/etc/sonic.cfg
-      - sonic-data:/var/lib/sonic/store
-volumes:
-  keycloak-data:
-  postgresql-data:
-  sonic-data:
+      - .var/sonic:/var/lib/sonic/store
 
 networks:
   local_network:
